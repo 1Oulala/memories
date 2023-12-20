@@ -1,17 +1,20 @@
-const dotenv = require('dotenv');
+const dotenv = require('dotenv').config({ path: './.env' });
 const path = require('path');
 const express = require('express');
-// const db = require('../db');
+const db = require('../db');
+const controllers = require('./controllers/memory');
 
 const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../client/public')));
 
-// app.get('/api/memories', controllers.getAll);
+app.post('/memories', controllers.add);
+app.get('/memories', controllers.getAll);
+// app.get('/memories/name', controllers.getByName);
+app.get('/memories/terms', controllers.getByTerms);
 
-
-const PORT = process.env.PORT || 9500;
+const PORT = process.env.PORT || 3007;
 
 app.listen(PORT, () => {
-  console.log(`memories Web server running on : http:localhost:${PORT}`)
+  console.log(`memories Web server running on : http:localhost:${PORT}`);
 });

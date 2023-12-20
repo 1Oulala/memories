@@ -1,87 +1,97 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const MemoryForm = ({}) => {
-  const [storyDetails, setStoryDetails] = useState({
-    story: '',
+function MemoryForm({ setStatus }) {
+  const [memoryDetails, setMemoryDetails] = useState({
+    detail: '',
     year: 2023,
     month: '',
     name: '',
-    place: ''
+    place: '',
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('/api/memories', {
-      story,
-      year,
-      month,
-      name,
-      place,
-    })
-      .then((response) => {
+    axios.post('/memories', { ...memoryDetails })
+      .then(() => {
         console.log('Memory saved successfully!');
+        setStatus(0);
       })
-      .catch((error) => { console.error('Error saving memory:', error);});
+      .catch((error) => { console.error('Error saving memory:', error); });
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="story">Story/Event:</label>
-      <br/>
+    <form id="memoryForm" onSubmit={handleSubmit}>
+      <label htmlFor="detail">Details:</label>
+      <br />
       <textarea
-        id="story"
-        value={storyDetails.story}
-        onChange={(e) => setStoryDetails({...storyDetails, story: e.target.value})}
+        className="detail"
+        value={memoryDetails.detail}
+        onChange={(e) => setMemoryDetails({ ...memoryDetails, detail: e.target.value })}
         required
       />
-      <br/>
+      <br />
       <label htmlFor="year">Year:</label>
-      <input type="number"
-        id="year"
-        value={storyDetails.year}
-        onChange={(e) => setStoryDetails({...storyDetails, year: e.target.value})}
-        required/>
-      <br/>
+      <input
+        type="number"
+        className="year"
+        value={memoryDetails.year}
+        onChange={(e) => setMemoryDetails({ ...memoryDetails, year: e.target.value })}
+        required
+      />
+      <br />
 
       <label htmlFor="month">Month:</label>
-      {/* <input type="number" id="month" value={month} onChange={(e) => setMonth(e.target.value)} required/> */}
-        <select id="month" name="month"
-          value={storyDetails.month}
-          onChange={(e) => setStoryDetails({...storyDetails, month: e.target.value})}>
-          <option value="Jan">Jan</option>
-          <option value="Feb">Feb</option>
-          <option value="Mar">Mar</option>
-          <option value="Apr">Apr</option>
-          <option value="May">May</option>
-          <option value="Jun">Jun</option>
-          <option value="Jul">Jul</option>
-          <option value="Aug">Aug</option>
-          <option value="Sep">Sep</option>
-          <option value="Oct">Oct</option>
-          <option value="Nov">Nov</option>
-          <option value="Dec">Dec</option>
-        </select>
-      <br/>
+      <select
+        className="month"
+        name="month"
+        value={memoryDetails.month}
+        onChange={(e) => setMemoryDetails({ ...memoryDetails, month: e.target.value })}
+      >
+        <option value="Jan">Jan</option>
+        <option value="Feb">Feb</option>
+        <option value="Mar">Mar</option>
+        <option value="Apr">Apr</option>
+        <option value="May">May</option>
+        <option value="Jun">Jun</option>
+        <option value="Jul">Jul</option>
+        <option value="Aug">Aug</option>
+        <option value="Sep">Sep</option>
+        <option value="Oct">Oct</option>
+        <option value="Nov">Nov</option>
+        <option value="Dec">Dec</option>
+      </select>
+      <br />
 
       <label htmlFor="name">Name:</label>
-      <input type="text"
-        id="name"
-        value={storyDetails.name}
-        onChange={(e) => setStoryDetails({...storyDetails, name: e.target.value})}
-        required/>
-      <br/>
+      <input
+        type="text"
+        className="name"
+        value={memoryDetails.name}
+        onChange={(e) => setMemoryDetails({ ...memoryDetails, name: e.target.value })}
+        required
+      />
+      <br />
 
       <label htmlFor="place">Place:</label>
-      <input type="text"
-        id="place" value={storyDetails.place}
-        onChange={(e) => setStoryDetails({...storyDetails, place: e.target.value})}
-        required/>
-      <br/>
+      <input
+        type="text"
+        className="place"
+        value={memoryDetails.place}
+        onChange={(e) => setMemoryDetails({ ...memoryDetails, place: e.target.value })}
+        required
+      />
+      <br />
+
+      <button className="returnButton" type="submit" onClick={(e) => { e.preventDefault(); setStatus(0); }}>
+        {'<<'}
+        {' '}
+        Go Back
+      </button>
 
       <button type="submit">Save Memory</button>
     </form>
   );
-};
+}
 
 export default MemoryForm;
