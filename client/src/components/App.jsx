@@ -8,8 +8,34 @@ import HomePage from './HomePage.jsx';
 function App() {
   const [memoryData, setMemoryData] = useState([]);
   const [status, setStatus] = useState(0);
+  const [searchTerms, setSearchTerms] = useState({
+    year: '',
+    month: '',
+    name: '',
+    place: '',
+  });
 
-  useEffect(() => { console.log('searching..'); }, [status]); // memoryData not rendering on time: consider moving handlearch to app
+  // eslint-disable-next-line no-return-assign
+  const searchFor = (key, value) => {
+    const tempObj = { ...searchTerms };
+    tempObj[key] = value;
+    setSearchTerms(tempObj);
+  };
+  // Handle the search
+  const handleSearch = (obj) => {
+    const temp = {};
+    const keys = Object.keys(obj);
+    const terms = keys.filter((term) => obj[term].length > 0)
+      // eslint-disable-next-line no-return-assign
+      .map((val) => temp[val] = obj[val]);
+      // make get request with the given terms
+    axios.get('/memories/search', { params: { ...temp } })
+      .then((response) => {
+        setMemoryData([...response.data]);
+        setStatus(3);
+      })
+      .catch((error) => { console.error('search failed..:', error); });
+  };
 
   return (
     <div className="app">
@@ -17,7 +43,15 @@ function App() {
       <br />
       { status === 1 && <MemoryForm setStatus={setStatus} />}
       <br />
-      {status === 2 && <SearchForm setMemoryData={setMemoryData} setStatus={setStatus} />}
+      {status === 2 && (
+      <SearchForm
+        handleSearch={handleSearch}
+        searchTerms={searchTerms}
+        searchFor={searchFor}
+        setMemoryData={setMemoryData}
+        setStatus={setStatus}
+      />
+      )}
       <br />
       {status === 3 && <Display memoryData={memoryData} setStatus={setStatus} /> }
     </div>

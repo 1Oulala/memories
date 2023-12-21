@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, '../client/public')));
 app.post('/memories', controllers.add);
 app.get('/memories', controllers.getAll);
 // app.get('/memories/name', controllers.getByName);
-app.get('/memories/terms', controllers.getByTerms);
+app.get('/memories/search', controllers.getByTerms);
 
 const PORT = process.env.PORT || 3007;
 

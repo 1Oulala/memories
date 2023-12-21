@@ -1,35 +1,17 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-function SearchForm({ setMemoryData, setStatus }) {
-  const [searchTerms, setSearchTerms] = useState({
-    year: '',
-    month: '',
-    name: '',
-    place: '',
-  });
-
-  const handleSearch = (e) => {
+function SearchForm({
+  setMemoryData, setStatus, handleSearch, searchTerms, searchFor,
+}) {
+  const submitSearch = (e) => {
     e.preventDefault();
-    console.log('::::', searchTerms);
-    const temp = {};
-    const keys = Object.keys(searchTerms);
-    const terms = keys.filter((term) => searchTerms[term].length > 0)
-      // eslint-disable-next-line no-return-assign
-      .map((val) => temp[val] = searchTerms[val]);
-    console.log('terms:::', temp);
-    axios.get('/memories/terms', { params: { ...temp } })
-      .then((response) => {
-        console.log(response.data);
-        setMemoryData([...response.data]);
-        setStatus(3);
-      })
-      .catch((error) => { console.error('Error getting the memory:', error); });
+    handleSearch(searchTerms);
   };
 
   return (
-
-    <form id="searchForm" onSubmit={handleSearch}>
+  // setSearchTerms((prevSearchTerms) => prevSearchTerms[key] = value)
+    <form id="searchForm" onSubmit={submitSearch}>
       <h3>Search for a memory</h3>
       <h5>Use any of the terms below: </h5>
       <br />
@@ -39,18 +21,16 @@ function SearchForm({ setMemoryData, setStatus }) {
         type="number"
         className="year"
         value={searchTerms.year}
-        onChange={(e) => setSearchTerms({ ...searchTerms, year: e.target.value })}
+        onChange={(e) => searchFor('year', e.target.value)}
       />
       <br />
 
       <label htmlFor="month">Month:</label>
-      {/* <input type="number" className="month" value={month}
-        onChange={(e) => setMonth(e.target.value)} required/> */}
       <select
         className="month"
         name="month"
         value={searchTerms.month}
-        onChange={(e) => setSearchTerms({ ...searchTerms, month: e.target.value })}
+        onChange={(e) => searchFor('month', e.target.value)}
       >
         <option value="Jan">Jan</option>
         <option value="Feb">Feb</option>
@@ -72,7 +52,7 @@ function SearchForm({ setMemoryData, setStatus }) {
         type="text"
         className="name"
         value={searchTerms.name}
-        onChange={(e) => setSearchTerms({ ...searchTerms, name: e.target.value })}
+        onChange={(e) => searchFor('name', e.target.value)}
       />
       <br />
 
@@ -81,7 +61,7 @@ function SearchForm({ setMemoryData, setStatus }) {
         type="text"
         className="place"
         value={searchTerms.place}
-        onChange={(e) => setSearchTerms({ ...searchTerms, place: e.target.value })}
+        onChange={(e) => searchFor('place', e.target.value)}
       />
       <br />
 

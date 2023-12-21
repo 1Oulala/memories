@@ -20,18 +20,6 @@ exports.getAll = (req, res) => {
     .catch((err) => res.sendStatus(500));
 };
 
-// // gets all memories available associated with the name
-// exports.getByName = (req, res) => {
-//   const prop = req.body
-//   console.log(':::',prop)
-//   Memory.find({name: req.body.name})
-//     .then((data) => {
-//       console.log(':::',data)
-//       res.status(200).json(data);
-//     })
-//     .catch((err) => res.sendStatus(500));
-// };
-
 // gets one memory based on the chosen filed from all available memories
 exports.getByTerms = (req, res) => {
   const prop = req.query;
