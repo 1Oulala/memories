@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 
 function SearchForm({
   setMemoryData, setStatus, handleSearch, searchTerms, searchFor,
@@ -71,7 +70,7 @@ function SearchForm({
         Go Back
       </button>
 
-      <button type="submit">Search 🔍</button>
+      <button className="returnButton" type="submit">Search 🔍</button>
     </form>
   );
 }

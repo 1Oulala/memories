@@ -1,6 +1,150 @@
 
 * {
-  background-color: rgb(241, 228, 237);
-  margin: 0.3rem;
+    background-color:   rgb(236, 212, 229);
+   /* background-color: rgb(128, 46, 46); */
+    margin: 0.3rem;
+}
 
+.home {
+  display: flex;
+  /* background: rgb(241, 228, 237); */
+  padding: 10rem;
+  border: 0.2rem solid black;
+  position: center;
+  margin: 10rem;
+  height:100%
+}
+
+#title {
+  height:100%;
+  border: 0.1rem solid black;
+  background-color: rgb(226, 186, 214);
+  width: 18%;
+  margin-bottom: 10rem;
+  margin-left: 9%;
+  margin-top: 9%;
+}
+
+.homeButton {
+  background-color:rgb(219, 176, 206);
+  border: 0.1rem solid black;
+  width: 12%;
+  height: auto;
+  margin-bottom: 1rem;
+  padding: 1%;
+  text-align: center;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+
+}
+
+.homeButton:hover {
+  background-color: rgb(202, 132, 180);
+}
+
+
+/* addMemory */
+
+#memoryForm {
+  display: flex;
+  flex-direction: column;
+  padding: 5rem;
+  border: 0.2rem solid black;
+  position: center;
+  margin: 2rem;
+  height:50%;
+}
+
+.detail {
+  margin-bottom: 0.5rem;
+  width: 60%;
+  height: 12.5rem;
+  border: 0.1rem solid rgb(10, 10, 10);
+}
+
+.year {
+  margin-bottom: 0.5rem;
+  width: 3.5%;
+  height: 1.5rem;
+}
+
+.month {
+  margin-bottom: 0.5rem;
+  width: 3.5%;
+  height: 1.5rem;
+}
+
+.name {
+  margin-bottom: 0.5rem;
+  width: 20%;
+  height: 1.5rem;
+}
+
+.place {
+  margin-bottom: 0.5rem;
+  width: 20%;
+  height: 1.5rem;
+}
+
+.returnButton {
+  background-color: rgb(219, 176, 206);
+  border: 0.1rem solid black;
+  width: 10%;
+  height: auto;
+  margin-bottom: 0.5rem;
+  padding: 1%;
+  text-align: center;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+  margin-left: 0.5rem;
+}
+
+.returnButton:hover {
+  background-color: rgb(202, 132, 180);
+}
+/* search */
+
+#searchForm {
+  display: flex;
+  flex-direction: column;
+  padding: 5rem;
+  border: 0.2rem solid black;
+  position: center;
+  margin: 2rem;
+  height:50%;
+}
+
+/* memo */
+
+#memo {
+  display: flex;
+  flex-direction: column;
+  padding: 5rem;
+  border: 0.2rem solid black;
+  position: center;
+  margin: 2rem;
+  height:50%;
+}
+
+#memoDetail {
+  margin-bottom: 0.5rem;
+  width: 60%;
+  height: 12.5rem;
+  border: 0.1rem solid rgb(10, 10, 10);
+}
+
+#delete {
+  background-color: rgb(219, 176, 206);
+  border: 0.1rem solid black;
+  width: 10%;
+  height: auto;
+  margin-bottom: 0.5rem;
+  padding: 1%;
+  text-align: center;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+  margin-left: 0.5rem;
 }

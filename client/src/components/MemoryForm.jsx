@@ -73,7 +73,7 @@ function MemoryForm({ setStatus }) {
       />
       <br />
 
-      <label htmlFor="place">Place:</label>
+      <label htmlFor="place">Place/Location:</label>
       <input
         type="text"
         className="place"
@@ -89,7 +89,7 @@ function MemoryForm({ setStatus }) {
         Go Back
       </button>
 
-      <button type="submit">Save Memory</button>
+      <button className="returnButton" type="submit">Save Memory</button>
     </form>
   );
 }

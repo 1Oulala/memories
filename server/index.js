@@ -9,12 +9,12 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../client/public')));
 
 app.post('/memories', controllers.add);
-app.get('/memories', controllers.getAll);
-// app.get('/memories/name', controllers.getByName);
+// app.get('/memories', controllers.getAll);
 app.get('/memories/search', controllers.getByTerms);
+app.delete('/memories/:id', controllers.deleteByID);
 
 const PORT = process.env.PORT || 3007;
 
 app.listen(PORT, () => {
-  console.log(`memories Web server running on : http:localhost:${PORT}`);
+  console.log(`memories Web server running on: http://localhost:${PORT}`);
 });

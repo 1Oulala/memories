@@ -8,6 +8,7 @@ import HomePage from './HomePage.jsx';
 function App() {
   const [memoryData, setMemoryData] = useState([]);
   const [status, setStatus] = useState(0);
+  const [id, setID] = useState('');
   const [searchTerms, setSearchTerms] = useState({
     year: '',
     month: '',
@@ -21,6 +22,12 @@ function App() {
     tempObj[key] = value;
     setSearchTerms(tempObj);
   };
+  // setMemory Alias
+  const resetMemoryData = (value) => {
+    const temp = [...memoryData];
+    setMemoryData(temp);
+  };
+
   // Handle the search
   const handleSearch = (obj) => {
     const temp = {};
@@ -34,8 +41,21 @@ function App() {
         setMemoryData([...response.data]);
         setStatus(3);
       })
-      .catch((error) => { console.error('search failed..:', error); });
+      .catch((error) => { console.error('search failed:', error); });
   };
+    // deletes Memory based on id
+  const handleDeleteMemory = () => {
+    axios.delete(`/memories/${id}`)
+      .then((response) => console.log('deleted..', response))
+      // .then(() => handleSearch(handleSearch))
+      .catch((err) => console.log('Error deleting:', err));
+  };
+  useEffect(() => {
+    if (id === '') {
+      return;
+    }
+    handleDeleteMemory();
+  }, [id]);
 
   return (
     <div className="app">
@@ -53,7 +73,16 @@ function App() {
       />
       )}
       <br />
-      {status === 3 && <Display memoryData={memoryData} setStatus={setStatus} /> }
+      {status === 3 && (
+      <Display
+        setID={setID}
+        memoryData={memoryData}
+        setStatus={setStatus}
+        searchTerms={searchTerms}
+        handleSearch={handleSearch}
+        handleDeleteMemory={handleDeleteMemory}
+      />
+      ) }
     </div>
   );
 }

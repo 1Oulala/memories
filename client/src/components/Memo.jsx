@@ -1,6 +1,10 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useEffect } from 'react';
+import axios from 'axios';
 
-function Memo({ memory, setStatus }) {
+function Memo({
+  memory, searchTerms, handleSearch, handleDeleteMemory, setID,
+}) {
   return (
     <div className="memo">
       <p className="memoDetail">
@@ -26,10 +30,11 @@ function Memo({ memory, setStatus }) {
         {' '}
         {memory.place}
       </p>
-      <button type="button" className="delete">delete memory</button>
+      <button type="button" className="delete" onClick={() => setID(memory._id)}>delete memory</button>
       <br />
     </div>
   );
 }
 
 export default Memo;
+// onClick={deleteMemo(memory._id)}
