@@ -1,42 +1,60 @@
 
 * {
-    background-color:   rgb(236, 212, 229);
+    /* background-color:   rgb(244, 236, 243); */
+    background-color: aliceblue;
    /* background-color: rgb(128, 46, 46); */
-    margin: 0.3rem;
+    height: 100%;
+    width: 100%;
+    /* overflow: hidden; */
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
 .home {
   display: flex;
-  /* background: rgb(241, 228, 237); */
-  padding: 10rem;
-  border: 0.2rem solid black;
-  position: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   margin: 10rem;
-  height:100%
+  margin-left: 30%;
+  height: 800px;
+  width: 800px;
+  overflow: hidden;
 }
 
 #title {
-  height:100%;
-  border: 0.1rem solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10%;
   background-color: rgb(226, 186, 214);
-  width: 18%;
-  margin-bottom: 10rem;
-  margin-left: 9%;
-  margin-top: 9%;
+  width: fit-content;
+  margin-left: 35%;
+  margin-top: 5%;
+  border-radius: 15%;
+
 }
 
 .homeButton {
-  background-color:rgb(219, 176, 206);
-  border: 0.1rem solid black;
-  width: 12%;
-  height: auto;
-  margin-bottom: 1rem;
-  padding: 1%;
-  text-align: center;
-  font-size: 1rem;
   display: flex;
   flex-direction: row;
-
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  height: 70px;
+  margin-right: 5rem;
+  margin-top: 50px;
+  border-radius: 30%;
+  border-style:double;
+  font-size: 1rem;
+  background-color:rgb(219, 176, 206);
 }
 
 .homeButton:hover {
@@ -49,56 +67,83 @@
 #memoryForm {
   display: flex;
   flex-direction: column;
-  padding: 5rem;
-  border: 0.2rem solid black;
-  position: center;
-  margin: 2rem;
-  height:50%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0.5rem;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
 .detail {
+  height: 400%;
+  width: 50%;
+  border-style: groove;
   margin-bottom: 0.5rem;
-  width: 60%;
-  height: 12.5rem;
-  border: 0.1rem solid rgb(10, 10, 10);
+  /* background-color:rgb(255, 255, 255); */
+  background-color:   rgb(244, 236, 243);
 }
 
 .year {
+  height: 50%;
+  width: 4%;
+  border-style: groove;
   margin-bottom: 0.5rem;
-  width: 3.5%;
-  height: 1.5rem;
+  /* background-color:rgb(255, 255, 255); */
+  background-color:   rgb(244, 236, 243);
 }
 
 .month {
+  width: 4%;
+  height: 40%;
+  border-style: groove;
   margin-bottom: 0.5rem;
-  width: 3.5%;
-  height: 1.5rem;
+  /* background-color:rgb(255, 255, 255); */
+  background-color:   rgb(244, 236, 243);
 }
 
 .name {
+  width: 10%;
+  height: 60%;
+  border-style: groove;
   margin-bottom: 0.5rem;
-  width: 20%;
-  height: 1.5rem;
+  /* background-color:rgb(255, 255, 255); */
+  background-color:   rgb(244, 236, 243);
 }
 
 .place {
+  width: 10%;
+  height: 60%;
+  border-style: groove;
   margin-bottom: 0.5rem;
-  width: 20%;
-  height: 1.5rem;
+  /* background-color:rgb(255, 255, 255); */
+  background-color:   rgb(244, 236, 243);
+}
+
+.label {
+  height: 40%;
+}
+
+
+.return-btns {
+  display: flex;
+  font-size: 1rem;
+  width: 100%;
+  height: 100%;
 }
 
 .returnButton {
-  background-color: rgb(219, 176, 206);
-  border: 0.1rem solid black;
-  width: 10%;
-  height: auto;
-  margin-bottom: 0.5rem;
-  padding: 1%;
-  text-align: center;
-  font-size: 1rem;
   display: flex;
-  flex-direction: row;
-  margin-left: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  width: 10%;
+  height: 92%;
+  margin-right: 3rem;
+  margin-top: 5px;
+  border-radius: 30%;
+  border-style:double;
+  font-size: 1rem;
+  background-color:rgb(219, 176, 206);
 }
 
 .returnButton:hover {
@@ -109,35 +154,107 @@
 #searchForm {
   display: flex;
   flex-direction: column;
-  padding: 5rem;
-  border: 0.2rem solid black;
-  position: center;
-  margin: 2rem;
-  height:50%;
+  justify-content: flex-start;
+  align-items: flex flex-start;
+  margin: 0.5rem;
+  height: 100%;
+  width: 100%;
 }
+
+.search-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 20%;
+}
+
+.title-line {
+  height: 50%;
+  margin: 0.1rem;
+
+}
+
+.search-year {
+  height: 5%;
+  width: 4%;
+  border-style: groove;
+  margin-bottom: 0.5rem;
+  /* background-color:rgb(255, 255, 255); */
+  background-color:   rgb(244, 236, 243);
+}
+
+.search-month {
+  height: 5%;
+  width: 4%;
+  border-style: groove;
+  margin-bottom: 0.5rem;
+  /* background-color:rgb(255, 255, 255); */
+  background-color:   rgb(244, 236, 243);
+}
+
+.search-name {
+  height: 6%;
+  width: 10%;
+  border-style: groove;
+  margin-bottom: 0.5rem;
+  /* background-color:rgb(255, 255, 255); */
+  background-color:   rgb(244, 236, 243);
+}
+
+.search-place {
+  height: 6%;
+  width: 10%;
+  border-style: groove;
+  margin-bottom: 0.5rem;
+  /* background-color:rgb(255, 255, 255); */
+  background-color:   rgb(244, 236, 243);
+}
+
+.search-label {
+  height: 4%;
+}
+
+.search-btns {
+  display: flex;
+  font-size: 1rem;
+  width: 100%;
+  height: 12%;
+}
+
 
 /* memo */
 
-#memo {
+.memos {
   display: flex;
   flex-direction: column;
-  padding: 5rem;
-  border: 0.2rem solid black;
-  position: center;
-  margin: 2rem;
-  height:50%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0.5rem;
+  height: 60%;
+  width: 100%;
 }
 
-#memoDetail {
+
+.memoDetail {
   margin-bottom: 0.5rem;
-  width: 60%;
-  height: 12.5rem;
-  border: 0.1rem solid rgb(10, 10, 10);
+  width: fit-content;
+  height: 100%;
+  margin-left: 25px;
+  background-color: rgb(244, 236, 243);
 }
 
-#delete {
+.memoDetails {
+  margin-bottom: 0.5rem;
+  width: 50%;
+  height: 4000px;
+  border-radius: 10%;
+  background-color:  rgb(244, 236, 243);
+  margin-left: 25px;
+}
+
+.delete {
   background-color: rgb(219, 176, 206);
-  border: 0.1rem solid black;
   width: 10%;
   height: auto;
   margin-bottom: 0.5rem;
@@ -147,4 +264,37 @@
   display: flex;
   flex-direction: row;
   margin-left: 0.5rem;
+  border-radius: 30%;
+  border-style:double;
 }
+
+/*display*/
+
+.display {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0.5rem;
+  height: 100%;
+  width: 100%;
+  overflow:scroll;
+}
+
+.return-home-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10%;
+  height: 100%;
+  border-radius: 30%;
+  border-style:double;
+  font-size: 1rem;
+  background-color:rgb(219, 176, 206);
+}
+
+.return-home-btn:hover,
+.delete:hover {
+  background-color: rgb(202, 132, 180);
+}
+

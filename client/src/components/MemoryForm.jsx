@@ -12,17 +12,22 @@ function MemoryForm({ setStatus }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('/memories', { ...memoryDetails })
+    axios
+      .post('/memories', { ...memoryDetails })
       .then(() => {
         console.log('Memory saved successfully!');
         setStatus(0);
       })
-      .catch((error) => { console.error('Error saving memory:', error); });
+      .catch((error) => {
+        console.error('Error saving memory:', error);
+      });
   };
 
   return (
     <form id="memoryForm" onSubmit={handleSubmit}>
-      <label htmlFor="detail">Details:</label>
+      <label htmlFor="detail" className="label">
+        Details:
+      </label>
       <br />
       <textarea
         className="detail"
@@ -31,7 +36,9 @@ function MemoryForm({ setStatus }) {
         required
       />
       <br />
-      <label htmlFor="year">Year:</label>
+      <label htmlFor="year" className="label">
+        Year:
+      </label>
       <input
         type="number"
         className="year"
@@ -41,7 +48,9 @@ function MemoryForm({ setStatus }) {
       />
       <br />
 
-      <label htmlFor="month">Month:</label>
+      <label htmlFor="month" className="label">
+        Month:
+      </label>
       <select
         className="month"
         name="month"
@@ -63,7 +72,9 @@ function MemoryForm({ setStatus }) {
       </select>
       <br />
 
-      <label htmlFor="name">Name:</label>
+      <label htmlFor="name" className="label">
+        Name:
+      </label>
       <input
         type="text"
         className="name"
@@ -73,7 +84,9 @@ function MemoryForm({ setStatus }) {
       />
       <br />
 
-      <label htmlFor="place">Place/Location:</label>
+      <label htmlFor="place" className="label">
+        Place/Location:
+      </label>
       <input
         type="text"
         className="place"
@@ -83,13 +96,24 @@ function MemoryForm({ setStatus }) {
       />
       <br />
 
-      <button className="returnButton" type="submit" onClick={(e) => { e.preventDefault(); setStatus(0); }}>
-        {'<<'}
-        {' '}
-        Go Back
-      </button>
+      <div className="return-btns">
+        <button
+          className="returnButton"
+          type="submit"
+          onClick={(e) => {
+            e.preventDefault();
+            setStatus(0);
+          }}
+        >
+          {'<<'}
+          {' '}
+          Go Back
+        </button>
 
-      <button className="returnButton" type="submit">Save Memory</button>
+        <button className="returnButton" type="submit">
+          Save Memory
+        </button>
+      </div>
     </form>
   );
 }

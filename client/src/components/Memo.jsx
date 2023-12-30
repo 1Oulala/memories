@@ -3,11 +3,15 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 
 function Memo({
-  memory, searchTerms, handleSearch, handleDeleteMemory, setID,
+  memory,
+  searchTerms,
+  handleSearch,
+  handleDeleteMemory,
+  setID,
 }) {
   return (
-    <div className="memo">
-      <p className="memoDetail">
+    <>
+      <p className="memoDetails">
         Details:
         <br />
         {memory.detail}
@@ -30,11 +34,16 @@ function Memo({
         {' '}
         {memory.place}
       </p>
-      <button type="button" className="delete" onClick={() => setID(memory._id)}>delete memory</button>
+      <button
+        type="button"
+        className="delete"
+        onClick={() => setID(memory._id)}
+      >
+        delete memory
+      </button>
       <br />
-    </div>
+    </>
   );
 }
 
 export default Memo;
-// onClick={deleteMemo(memory._id)}

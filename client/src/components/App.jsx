@@ -32,22 +32,26 @@ function App() {
   const handleSearch = (obj) => {
     const temp = {};
     const keys = Object.keys(obj);
-    const terms = keys.filter((term) => obj[term].length > 0)
+    const terms = keys
+      .filter((term) => obj[term].length > 0)
       // eslint-disable-next-line no-return-assign
-      .map((val) => temp[val] = obj[val]);
-      // make get request with the given terms
-    axios.get('/memories/search', { params: { ...temp } })
+      .map((val) => (temp[val] = obj[val]));
+    // make get request with the given terms
+    axios
+      .get('/memories/search', { params: { ...temp } })
       .then((response) => {
         setMemoryData([...response.data]);
         setStatus(3);
       })
-      .catch((error) => { console.error('search failed:', error); });
+      .catch((error) => {
+        console.error('search failed:', error);
+      });
   };
-    // deletes Memory based on id
+  // deletes Memory based on id
   const handleDeleteMemory = () => {
-    axios.delete(`/memories/${id}`)
-      .then((response) => console.log('deleted..', response))
-      // .then(() => handleSearch(handleSearch))
+    axios
+      .delete(`/memories/${id}`)
+      .then(() => handleSearch(searchTerms))
       .catch((err) => console.log('Error deleting:', err));
   };
   useEffect(() => {
@@ -59,30 +63,30 @@ function App() {
 
   return (
     <div className="app">
-      { status === 0 && <HomePage setStatus={setStatus} />}
+      {status === 0 && <HomePage setStatus={setStatus} />}
       <br />
-      { status === 1 && <MemoryForm setStatus={setStatus} />}
+      {status === 1 && <MemoryForm setStatus={setStatus} />}
       <br />
       {status === 2 && (
-      <SearchForm
-        handleSearch={handleSearch}
-        searchTerms={searchTerms}
-        searchFor={searchFor}
-        setMemoryData={setMemoryData}
-        setStatus={setStatus}
-      />
+        <SearchForm
+          handleSearch={handleSearch}
+          searchTerms={searchTerms}
+          searchFor={searchFor}
+          setMemoryData={setMemoryData}
+          setStatus={setStatus}
+        />
       )}
       <br />
       {status === 3 && (
-      <Display
-        setID={setID}
-        memoryData={memoryData}
-        setStatus={setStatus}
-        searchTerms={searchTerms}
-        handleSearch={handleSearch}
-        handleDeleteMemory={handleDeleteMemory}
-      />
-      ) }
+        <Display
+          setID={setID}
+          memoryData={memoryData}
+          setStatus={setStatus}
+          searchTerms={searchTerms}
+          handleSearch={handleSearch}
+          handleDeleteMemory={handleDeleteMemory}
+        />
+      )}
     </div>
   );
 }
